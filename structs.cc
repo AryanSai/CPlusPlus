@@ -1,27 +1,17 @@
 #include <iostream>
 using namespace std;
 
+struct student{
+	int roll;
+	string name;
+}global1,global2;
+
 int main(){
-	struct{
-		int data;
-		string name;
-	}student;
-
-	student.data=2;
-	student.name="aryan";
-
-	cout<< student.data << " "<<student.name <<endl;
-
-	//named structs
-	struct myData{
-		int rank;
-		string name;
-	};
-
-
-	myData d;
-	d.rank=10;
-	d.name="sao";
-	cout << d.name <<" " <<d.rank;
-
+	student local2 ={1,"aryan"};
+	//dot operator
+	student local;
+	local.roll=10;
+	local.name="sao";
+	cout << local.name <<" " << local.roll<<endl;
+	cout << local2.name <<" " << local2.roll<<endl;
 }
