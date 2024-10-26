@@ -8,6 +8,12 @@ class Person{
     protected:
         string knownSecret;
     public:
+        Person(){
+            cout << "Person constructor called!" << endl;
+        }
+        ~Person(){
+            cout << "Person destructor called!" << endl;
+        }
         string name;
         int age;
         void setName(string iname){
@@ -24,6 +30,12 @@ class Person{
 //sub class
 class Student : public Person{
     public:
+        Student(){
+            cout << "Student constructor called!" << endl;
+        }
+        ~Student(){
+            cout << "Student destructor called!" << endl;
+        }
         int id;
         void setId(int iid){
             id=iid;
@@ -31,7 +43,7 @@ class Student : public Person{
         
         void introduce(){
             cout << "Hi, I am " << name << " with id " << id << endl;
-            cout << "Since you are a friend, my secret is " << knownSecret << endl;
+            cout << "Since you re a friend, my secret is " << knownSecret << endl;
         }
 };
 
