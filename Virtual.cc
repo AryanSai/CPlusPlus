@@ -15,6 +15,7 @@ public:
     }
 };
 
+//if this class did not override the introduce function, then it would call the student introduce function only
 class GraduateStudent : public Student {
 public:
     void introduce() {
@@ -22,10 +23,12 @@ public:
     }
 };
 
-int main() {
-    Person* personPtr = new GraduateStudent();
-    personPtr->introduce();  // Calls GraduateStudent::introduce() due to virtual inheritance
+void whoisthis(Person &p){
+    p.introduce();
+}
 
-    delete personPtr;
+int main() {
+    GraduateStudent g;
+    g.introduce();  
     return 0;
 }
