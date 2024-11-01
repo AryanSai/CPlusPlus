@@ -1,6 +1,41 @@
 #include <iostream>
 using namespace std;
 
+class MarksArr
+{
+    int subjects[3];
+    int id;
+
+public:
+    MarksArr(int sub1, int sub2, int sub3)
+    {
+        subjects[0] = sub1;
+        subjects[1] = sub2;
+        subjects[2] = sub3;
+    }
+
+    int operator[](int pos)
+    {
+        return subjects[pos];
+    }
+
+    void operator()(int i)
+    {
+        id = i;
+        cout << "New ID is " << id << endl;
+    }
+
+    MarksArr *operator->()
+    { // should not have params
+        return this;
+    }
+
+    void display()
+    {
+        cout << subjects[0] << " " << subjects[1] << " " << subjects[2] << endl;
+    }
+};
+
 class Marks
 {
     int intmark;
@@ -43,7 +78,7 @@ public:
         this->intmark += 1;
         this->extmark += 1;
     }
-    void operator++(int) //post increment operator
+    void operator++(int) // post increment operator
     {
         this->intmark += 1;
         this->extmark += 1;
@@ -95,7 +130,7 @@ int main()
     m4 -= 10;
     m4.display();
 
-    //incremement and decrement operators
+    // incremement and decrement operators
     ++m4;
     m4.display();
 
@@ -104,5 +139,14 @@ int main()
 
     m1++;
     m1.display();
+
+    MarksArr arr(10, 20, 30);
+    cout << "arr[0]: " << arr[0] << endl;
+
+    arr(100);
+
+    arr.display(); //object 
+    arr->display(); //overloading
+
     return 0;
 }
