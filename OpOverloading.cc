@@ -1,5 +1,42 @@
 #include <iostream>
+#include <exception>
 using namespace std;
+
+class Student
+{
+    string name;
+    int age;
+
+public:
+    Student()
+    {
+        name = "noname";
+        age = 0;
+    }
+    Student(string name, int age)
+    {
+        this->name = name;
+        this->age = age;
+    }
+    void display(){
+        cout << "my name is "<< name << endl;
+    }   
+    void *operator new(size_t size){
+        void* pointer;
+        cout << "overloaded new"<< endl;
+        pointer = malloc(size);
+        if(!pointer){
+            bad_alloc ba;
+            throw ba;
+        }
+        return pointer;
+    }
+    void operator delete(void* pointer){
+        cout << "overloaded delete"<< endl;
+        free(pointer);
+    }
+
+};
 
 class MarksArr
 {
@@ -145,8 +182,16 @@ int main()
 
     arr(100);
 
-    arr.display(); //object 
-    arr->display(); //overloading
+    arr.display();  // object
+    arr->display(); // overloading
 
+    Student *s;
+    try{
+        s = new Student("aryan",24);
+        s->display();
+        delete s;
+    }catch(bad_alloc b){
+        cout << b.what() << endl;
+    }
     return 0;
 }
