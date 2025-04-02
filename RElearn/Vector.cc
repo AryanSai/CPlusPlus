@@ -1,30 +1,47 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void printV(const vector<int> &vec)
+void tryy(vector<int> &vec)
 {
-    for (int i : vec)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
+    vec[1] = 20;
 }
 
 int main()
 {
-    vector<int> v1(5, 0);
-    vector<int> v2 = {1, 2, 3, 4};
-    vector<int> v3;
+    vector<vector<int>> matrix(3, vector<int>(2));
+    cout << matrix.size() << endl;
+    cout << matrix[0].size() << endl;
 
-    printV(v1);
-    printV(v2);
-    printV(v3);
+    vector<int> vec(3);
+    cout << vec[1] << endl;
+    vec[1] = 10;
+    cout << vec[1] << endl;
+    vec.at(1) = 11;
+    cout << vec[1] << endl;
+    tryy(vec);
+    cout << vec[1] << endl;
 
-    // cout << v2[10] << endl;    // if index is invalid, gives garbage
-    // cout << v2.at(10) << endl; // if invalis, out of bounds error
+    cout << "Size before push back at end:" << endl;
+    cout << vec.size() << endl;
+    cout << vec.capacity() << endl;
 
-    cout << v2.max_size() << endl;
+    cout << "Size after push back at end:" << endl;
+    vec.push_back(11);
+    cout << vec.size() << endl;
+    cout << vec.capacity() << endl;
 
+    vector<int> vec2;
 
-    return 0;
+    cout << "Initial size: " << vec2.size() << endl;
+    cout << "Initial capacity: " << vec2.capacity() << endl;
+    cout << "Max size: " << vec2.max_size() << endl;
+
+    vec2.reserve(10);
+    cout << "After reserve(10): " << vec2.capacity() << endl;
+
+    vec2.push_back(1);
+    vec2.push_back(2);
+    cout << "Size after push_back: " << vec2.size() << endl;
+    cout << "Capacity after push_back: " << vec2.capacity() << endl;
 }
