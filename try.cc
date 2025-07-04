@@ -1,20 +1,13 @@
-// Online C++ compiler to run C++ program online
 #include <iostream>
 using namespace std;
-
-int digits(int num)
-{
-    int count = 0;
-    while (num > 0)
-    {
-        count++;
-        num /= 10;
-    }
-    return count;
-}
-
 int main()
 {
-    cout << digits(10);
-    return 0;
+    auto x = 10;
+    cout << x << endl;
+
+    int a = 10;
+    int b = a;
+    cout << b << endl;
+    a = 11;
+    cout << b << endl;
 }
